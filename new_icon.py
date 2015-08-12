@@ -1,0 +1,36 @@
+#!/usr/bin/python
+
+from gimpfu import *
+
+def showWin(width, height):
+    img = gimp.Image(width,height,RGB)
+    lyr = gimp.Layer(img, 'layer1', width, height, RGB, 100, NORMAL_MODE) 
+    lyr.fill(BACKGROUND_FILL)
+    img.add_layer(lyr)
+    gimp.Display(img)
+    gimp.displays_flush()
+    
+def createIcon(iconWidth, iconHeight):
+    showWin(iconWidth,iconHeight)
+    
+register(
+        "python_fu_NewIcon",
+        "Creates a new image as an LCD icon to be exported in C code",
+        "Creates a new image as an LCD icon to be exported in C code",
+        "David Muriuki Karibe",
+        "David Muriuki Karibe",
+        "2015",
+        "LCD Icon",#menu entry text
+        "",# Create a new image, don't work on an existing one
+        [
+         (PF_INT, "iconWidth", "Icon Width", 21),
+         (PF_INT, "iconHeight", "Icon Height", 12)#(Type, Name, Description, default, extra)
+        ],
+        [],
+        createIcon, menu="<Image>/File/Create")#path to menu entry, under file
+
+main()
+
+#register(
+#proc_name, blurb, help, author, copyright, date, label, imagetypes, params, results, function, menu=None, domain=None, on_query=None, on_run=None
+#)

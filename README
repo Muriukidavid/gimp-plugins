@@ -1,0 +1,2 @@
+This is a repo for my pthon GIMP plugins.
+to try them out, copy the scripts to .gimp2.8/plug-ins/ folder under your home directory on a Linux installation, then run Gimp.
