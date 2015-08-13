@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-from gimpfu import *
+from gimpfu import gimp, main, register, PF_INT, BACKGROUND_FILL,RGB, NORMAL_MODE
 
 def showWin(width, height):
     img = gimp.Image(width,height,RGB)
@@ -14,9 +14,9 @@ def createIcon(iconWidth, iconHeight):
     showWin(iconWidth,iconHeight)
     
 register(
-        "python_fu_NewIcon",
-        "Creates a new image as an LCD icon to be exported in C code",
-        "Creates a new image as an LCD icon to be exported in C code",
+        "NewIcon",
+        "Creates a new image as an LCD icon \nof a given width and height",
+        "Lets create an LCD icon",
         "David Muriuki Karibe",
         "David Muriuki Karibe",
         "2015",

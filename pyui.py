@@ -19,12 +19,14 @@
 #
 # Note: gimpfu.py is the most up-to-date list of UI items.
 
-from gimpfu import *
+from gimpfu import register, main, PF_INT,PF_FLOAT, PF_STRING, PF_TEXT,PF_COLOR
+from gimpfu import PF_IMAGE,PF_LAYER,PF_CHANNEL,PF_DRAWABLE,PF_RADIO,PF_SPINNER,PF_TOGGLE,PF_BOOL
+from gimpfu import PF_OPTION,PF_SLIDER,PF_FILE,PF_DIRNAME,PF_FONT,PF_GRADIENT,PF_PALETTE,PF_PATTERN,PF_BRUSH
 
 def show_py_ui(number, angle, word, text, bgcolor,
                newimg, newlayer, channel, drawable,
                shadowp, ascendingp, imgfmt, option,
-               size, opacity, imagefile, dir,
+               size, opacity, imagefile, dire,
                font, brush, pattern, gradient, palette ) :
     return
 
@@ -65,7 +67,7 @@ register(
         # (PF_ADJUSTMENT is the same as PF_SPINNER
 
         (PF_FILE, "imagefile", "Image file", ""),
-        (PF_DIRNAME, "dir", "Directory", "/tmp"),
+        (PF_DIRNAME, "dire", "Directory", "/tmp"),
 
         (PF_FONT, "font", "Font", "Sans"),
         (PF_BRUSH, "brush", "Brush", None),
