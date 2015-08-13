@@ -1,18 +1,11 @@
 #!/usr/bin/python
-
 from gimpfu import register, PF_IMAGE, PF_DRAWABLE, PF_STRING, PF_OPTION, main,gimp
 
-def ord3(data): 
-    r=data[0]
-    g=data[1]
-    b=data[2]
-    return "{%(i)d,%(j)d,%(k)d}" % {"i":ord(r), "j":ord(g), "k":ord(b)}
+def array2struct(data): 
+    return "{%(i)d,%(j)d,%(k)d}" % {"i":ord(data[0]), "j":ord(data[1]), "k":ord(data[2])}
 
 def packColor(data):
-    r=ord(data[0])
-    g=ord(data[1])
-    b=ord(data[2])
-    return str((r << 11) & 0xf800 | (g << 5) & 0x07c0 | (b & 0x003f))
+    return str((ord(data[0]) << 11) & 0xf800 | (ord(data[1]) << 5) & 0x07c0 | (ord(data[2]) & 0x003f))
     
 def plugin_main(timg, tdrawable,iconname,filename,colormode):
     pr =tdrawable.get_pixel_rgn(0, 0, timg.width,timg.height, False, False);
@@ -32,7 +25,7 @@ def plugin_main(timg, tdrawable,iconname,filename,colormode):
             output += ",\n" #end of each row
             j+=1
             i=0
-        while (i<timg.height-1): #the last row, no comma
+        while (i<timg.width-1): #the last row, no comma
             output += packColor(pr[i,j]) + ","
             i+=1
         output += packColor(pr[i,j]) #the last column, no comma
@@ -46,16 +39,16 @@ def plugin_main(timg, tdrawable,iconname,filename,colormode):
         output += "typedef struct{ \nunsigned char \nr,\ng,\nb;\n}RGB;\n\nRGB "+iconname+"[" + "%(size)d" % {"size":size} + "]={\n" 
         while (j<timg.height-1):
             while (i<timg.width-1):
-                output += ord3(pr[i,j]) + ","
+                output += array2struct(pr[i,j]) + ","
                 i+=1
-            output += ord3(pr[i,j]) #the last column, no comma
+            output += array2struct(pr[i,j]) #the last column, no comma
             output += ",\n" #end of each row
             j+=1
             i=0
         while (i<timg.height-1): #the last row, no comma
-            output += ord3(pr[i,j]) + ","
+            output += array2struct(pr[i,j]) + ","
             i+=1
-        output += ord3(pr[i,j]) #the last column, no comma
+        output += array2struct(pr[i,j]) #the last column, no comma
         output += "\n};"
         savefile = open(filename,"w")
         savefile.write(output)
