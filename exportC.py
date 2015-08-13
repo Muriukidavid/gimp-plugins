@@ -7,7 +7,7 @@ def array2struct(data):
 def packColor(data):
     return str((ord(data[0]) << 11) & 0xf800 | (ord(data[1]) << 5) & 0x07c0 | (ord(data[2]) & 0x003f))
     
-def plugin_main(timg, tdrawable,iconname,filename,colormode):
+def exportCcode(timg, tdrawable,iconname,filename,colormode):
     pr =tdrawable.get_pixel_rgn(0, 0, timg.width,timg.height, False, False);
     i=0
     j=0
@@ -54,7 +54,7 @@ def plugin_main(timg, tdrawable,iconname,filename,colormode):
         savefile.write(output)
         savefile.close() 
     else:
-        gimp.message("Error: No color mode selected")    
+        gimp.message("Error: No color mode selected")#will hardly happen as we now have a default colormode   
   
     
 register(
@@ -73,7 +73,7 @@ register(
          (PF_STRING,"filename","file to save code to","untitled.c"),
          (PF_OPTION,"colormode","RGB Color Mode",1,("12-bit(4-4-4): not implemented","16-bit(5-6-5)", "18-bit(6-6-6): not implemented","24-bit(8-8-8)"))
         ],
-        [],
-        plugin_main, menu="<Image>/File/Export/")
+        [],#no return params from the plugin function
+        exportCcode, menu="<Image>/File/Export/")
 
 main()
