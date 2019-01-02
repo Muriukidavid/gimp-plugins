@@ -17,9 +17,9 @@ register(
         "NewIcon",
         "Creates a new image as an LCD icon \nof a given width and height",
         "Lets create an LCD icon",
-        "David Muriuki Karibe",
-        "David Muriuki Karibe",
-        "2015",
+        "David Muriuki Karibe (karibe.co.ke, @muriukidavid)",
+        "Karibe 2019",
+        "2019",
         "LCD Icon",#menu entry text
         "",# Create a new image, don't work on an existing one
         [
@@ -27,7 +27,7 @@ register(
          (PF_INT, "iconHeight", "Icon Height", 12)#(Type, Name, Description, default, extra)
         ],
         [],
-        createIcon, menu="<Image>/File/Create")#path to menu entry, under file
+        createIcon, menu="<Image>/File/Create/")#path to menu entry, under file
 
 main()
 
