@@ -45,7 +45,7 @@ register(
          (PF_IMAGE, "timg", "Input image", None),
          (PF_DRAWABLE, "tdrawable", "Input drawable", None),
          (PF_STRING,"filename","file to save code to","t.bin"),
-         (PF_OPTION,"colormode","RGB Color Mode",1,("12-bit(4-4-4): not implemented","16-bit(5-6-5)", "18-bit(6-6-6): not implemented","24-bit(8-8-8): not implemented"))
+         (PF_OPTION,"colormode","RGB Color Mode",2,("12-bit(4-4-4): not implemented","16-bit(5-6-5)", "18-bit(6-6-6): not implemented","24-bit(8-8-8): not implemented"))
         ],
         [],#no return params from the plugin function
         exportCcodeBin, menu="<Image>/File/Export/")
