@@ -5,7 +5,7 @@ To use the plugins, copy the plugin scripts to the Gimp plugins folder (.gimp2.8
 ## exportC.py 
 This plugin exports C code for LCD icons designed in RGB and grayscale color modes or LCD font data for creating lookup tables.
 To use this plugin, launch GIMP, use the **File->Create->LCD icon** menu to create a file with speific dimensions. 
-Use **View->Zoom->Fit Image** in Window menu (Keyboard shortcut __Shift+Ctl+J__) to maximize the image.
+Use **View->Zoom->Fit Image in Window** menu (Keyboard shortcut __Shift+Ctl+J__) to maximize the image.
 For LCD font design, convert the image to binary (0,1) by selecting **Image->Mode->Indexed** and **Use black and white(1-bit) palette**
 Use **Tools->Paint Tools->Pencil** menu (Keyboard shortcut __N__) to select the Pencil tool. Set the brush property Hardness to 0. Select foreground and background as required and paint the artwork. 
 Select **File->Export C Code** menu to export the artwork in code. Select the file to save code in and options as desired.
